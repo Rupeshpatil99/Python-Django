@@ -1,16 +1,113 @@
-{% load static %}
+
+{% load static tailwind_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}My App{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}My Django App{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% tailwind_css %}
+
+    {% block extra_css %}{% endblock %}
 </head>
-<body>
-  <nav> this is a navbar</nav>
-  {% block content %}
-  {% endblock %}
-  
+
+<body class="antialiased">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+
+            <div class="flex justify-between items-center">
+
+                <!-- Logo -->
+                <a href="/" class="text-2xl font-extrabold text-gray-900">
+                    Django<span class="text-blue-600">Project</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-600 hover:text-blue-600 font-medium transition">
+                        Home
+                    </a>
+
+                    <a href="/GOT/" class="text-gray-600 hover:text-blue-600 font-medium transition">
+                        GOT
+                    </a>
+
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition">
+                        About
+                    </a>
+
+                    <a href="#features"
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-semibold transition">
+                        Explore
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-button"
+                        type="button"
+                        aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu"
+                        class="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="w-6 h-6"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden pt-4">
+                <div class="flex flex-col gap-3">
+                    <a href="/" class="py-2 text-gray-600 hover:text-blue-600">
+                        Home
+                    </a>
+
+                    <a href="/GOT/" class="py-2 text-gray-600 hover:text-blue-600">
+                        GOT
+                    </a>
+
+                    <a href="#about" class="py-2 text-gray-600 hover:text-blue-600">
+                        About
+                    </a>
+
+                    <a href="#features" class="py-2 text-gray-600 hover:text-blue-600">
+                        Features
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuButton = document.getElementById("menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuButton.addEventListener("click", function () {
+            const isHidden = mobileMenu.classList.toggle("hidden");
+            menuButton.setAttribute("aria-expanded", String(!isHidden));
+        });
+    </script>
+
 </body>
 </html>

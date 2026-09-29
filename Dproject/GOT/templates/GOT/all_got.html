@@ -1,6 +1,71 @@
 {% extends 'layout.html' %}
-{% block title %}GOT Page{% endblock %}
+{% load static %}
+
+{% block title %}Game of Thrones | Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'GOT/style.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h1>Welcome to the GOT Page!</h1>
-  <p>This is the content for the GOT page.</p>
+
+<section class="got-hero">
+    <div class="got-content">
+        <p class="got-subtitle">
+            WELCOME TO THE WORLD OF WESTEROS
+        </p>
+
+        <h1>GAME OF THRONES</h1>
+
+        <p class="got-description">
+            When you play the game of thrones, you win or you die.
+            Explore the legendary houses, powerful kings, and epic
+            battles of the Seven Kingdoms.
+        </p>
+
+        <a href="#houses" class="got-button">
+            Explore the Houses
+        </a>
+    </div>
+</section>
+
+<section class="got-section" id="houses">
+    <h2>The Great Houses</h2>
+
+    <p class="section-description">
+        Discover the noble families competing for power in Westeros.
+    </p>
+
+    <div class="house-container">
+
+        <div class="house-card">
+            <h3>House Stark</h3>
+            <p class="house-motto">Winter Is Coming</p>
+            <p>
+                The honorable family of the North, known for its loyalty,
+                courage, and connection to Winterfell.
+            </p>
+        </div>
+
+        <div class="house-card">
+            <h3>House Targaryen</h3>
+            <p class="house-motto">Fire and Blood</p>
+            <p>
+                A legendary family associated with dragons and a claim
+                to the Iron Throne.
+            </p>
+        </div>
+
+        <div class="house-card">
+            <h3>House Lannister</h3>
+            <p class="house-motto">Hear Me Roar!</p>
+            <p>
+                One of the wealthiest and most influential houses
+                in the Seven Kingdoms.
+            </p>
+        </div>
+
+    </div>
+</section>
+
 {% endblock %}

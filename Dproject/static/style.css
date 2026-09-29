@@ -1,9 +1,139 @@
-body{
-  background-color: #b23030;
-  color: rgb(95, 19, 19);
+/* General page */
+body {
+    margin: 0;
+    padding: 0;
+    background: #151515;
+    color: #e5e0d5;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
-h1{
-  text-align: center;
-  font-size: 2em;
+/* Hero section */
+.got-hero {
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.9)),
+        radial-gradient(circle, #49351d, #151515 75%);
+}
+
+.got-content {
+    max-width: 850px;
+}
+
+.got-subtitle {
+    color: #c6a45c;
+    letter-spacing: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.got-hero h1 {
+    color: #e5c46b;
+    font-size: clamp(36px, 7vw, 75px);
+    letter-spacing: 5px;
+    margin: 20px 0;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.got-description {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #ded8cc;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Button */
+.got-button {
+    display: inline-block;
+    padding: 13px 28px;
+    background: #a7833d;
+    color: #151515;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.got-button:hover {
+    background: #e5c46b;
+    color: #151515;
+    transform: translateY(-2px);
+}
+
+/* Great houses */
+.got-section {
+    padding: 55px 7%;
+    text-align: center;
+    background: #151515;
+}
+
+.got-section h2 {
+    color: #e5c46b;
+    font-size: 36px;
+}
+
+.section-description {
+    color: #bdb5a7;
+    margin-bottom: 35px;
+}
+
+.house-container {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(230px, 1fr)
+    );
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.house-card {
+    background: #222;
+    border: 1px solid #6e552b;
+    border-radius: 8px;
+    padding: 25px;
+    transition: .3s;
+}
+
+.house-card:hover {
+    transform: translateY(-6px);
+    border-color: #d4af37;
+    box-shadow: 0 8px 22px rgba(0,0,0,.5);
+}
+
+.house-card h3 {
+    color: #d4af37;
+    font-size: 24px;
+}
+
+.house-motto {
+    color: #b88a44;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.house-card p:last-child {
+    color: #d6d0c4;
+    line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .got-hero {
+        min-height: 55vh;
+    }
+
+    .got-hero h1 {
+        letter-spacing: 2px;
+    }
+
+    .got-section {
+        padding: 35px 5%;
+    }
 }

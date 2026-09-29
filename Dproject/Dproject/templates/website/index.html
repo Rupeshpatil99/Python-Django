@@ -1,6 +1,207 @@
+
 {% extends 'layout.html' %}
-{% block title %}Home Page{% endblock %}
+
+{% block title %}Home | Django + Tailwind{% endblock %}
+
 {% block content %}
-  <h1>Welcome to the Home Page!</h1>
-  <p>This is the content for the home page.</p>
+
+<!-- Hero Section -->
+<section class="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-6 py-20">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Hero Content -->
+        <div>
+            <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+                Welcome to My Django Project
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                Build Modern
+                <span class="text-blue-600">Websites</span>
+                with Django
+            </h1>
+
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                Discover the power of Django and Tailwind CSS.
+                Create responsive, clean, and beautiful web
+                experiences with Python and modern frontend design.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="#features"
+                   class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-xl shadow-lg transition duration-300">
+                    Explore Features →
+                </a>
+
+                <a href="#about"
+                   class="border border-gray-300 hover:border-blue-600 hover:text-blue-600 text-gray-700 font-semibold px-7 py-3 rounded-xl transition duration-300">
+                    Learn More
+                </a>
+            </div>
+
+            <div class="flex gap-8 mt-10">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900">Python</h3>
+                    <p class="text-sm text-gray-500">Backend</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900">Django</h3>
+                    <p class="text-sm text-gray-500">Framework</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900">Tailwind</h3>
+                    <p class="text-sm text-gray-500">Styling</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Visual -->
+        <div class="relative">
+            <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-10 border border-gray-100">
+                <div class="flex items-center gap-2 mb-8">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    <span class="text-sm text-gray-400 ml-3">my_django_app.py</span>
+                </div>
+
+                <div class="font-mono text-sm md:text-base leading-8">
+                    <p class="text-purple-600">from <span class="text-green-700">django.http</span> import HttpResponse</p>
+                    <br>
+                    <p class="text-purple-600">def <span class="text-blue-600">home</span>(request):</p>
+                    <p class="pl-6 text-gray-600">return HttpResponse(</p>
+                    <p class="pl-12 text-green-600">"Hello, Django!"</p>
+                    <p class="pl-6 text-gray-600">)</p>
+                </div>
+
+                <div class="mt-8 bg-green-50 border border-green-100 rounded-xl p-4">
+                    <p class="text-green-700 font-semibold">
+                        ✓ Server ready
+                    </p>
+                    <p class="text-sm text-green-600 mt-1">
+                        Your next idea starts here.
+                    </p>
+                </div>
+            </div>
+
+            <div class="absolute -z-10 -top-6 -right-6 w-32 h-32 bg-blue-300 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute -z-10 -bottom-8 -left-8 w-40 h-40 bg-indigo-300 rounded-full blur-3xl opacity-50"></div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Features Section -->
+<section id="features" class="py-20 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <p class="text-blue-600 font-semibold uppercase tracking-wider text-sm mb-3">
+                What I'm Learning
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Technologies Behind the Project
+            </h2>
+            <p class="text-gray-600">
+                A simple combination of powerful tools for building
+                modern web applications.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Django -->
+            <div class="group p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition duration-300">
+                <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-green-100 text-3xl mb-6">
+                    🐍
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Django
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    A Python web framework for building secure,
+                    maintainable, and scalable backend applications.
+                </p>
+            </div>
+
+            <!-- Tailwind -->
+            <div class="group p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition duration-300">
+                <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-100 text-3xl mb-6">
+                    🎨
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Tailwind CSS
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    A utility-first CSS framework that helps create
+                    responsive layouts and consistent designs.
+                </p>
+            </div>
+
+            <!-- Python -->
+            <div class="group p-8 rounded-2xl border border-gray-200 hover:border-blue-300 hover:shadow-xl transition duration-300">
+                <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-yellow-100 text-3xl mb-6">
+                    ⚡
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    Python
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    A readable and versatile programming language
+                    used for backend development and automation.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto text-center">
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">
+            About This Project
+        </span>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-6">
+            Learning by Building
+        </h2>
+
+        <p class="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
+            This project is a practical step toward becoming a
+            Python Django developer. It brings together backend
+            development, template rendering, URL routing, and
+            modern responsive styling in one application.
+        </p>
+
+        <div class="mt-8">
+            <a href="#features"
+               class="inline-block bg-gray-900 hover:bg-gray-700 text-white font-semibold px-7 py-3 rounded-xl transition duration-300">
+                View Technologies
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 px-6 py-8">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+            <h3 class="text-xl font-bold text-white">
+                Django<span class="text-blue-400">Project</span>
+            </h3>
+            <p class="text-sm text-gray-400 mt-1">
+                Built with Python, Django & Tailwind CSS
+            </p>
+        </div>
+
+        <p class="text-sm text-gray-400">
+            © 2026 My Django Project. Learning through code.
+        </p>
+    </div>
+</footer>
+
 {% endblock %}
