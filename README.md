@@ -1,256 +1,140 @@
-# Django Project: Dproject & GOT
+# Django Project – Dproject & GOT
 
-A Django project for learning and practicing Django fundamentals,
-including project organization, URL routing, views, HTML templates,
-static files, and the request-response cycle.
+A beginner-friendly Django project to practice backend development, URL routing, HTML templates, static files, and MySQL database integration.
+
+## Technologies Used
+
+* Python
+* Django
+* MySQL
+* HTML
+* CSS
+* Git & GitHub
 
 ## Project Structure
 
-The structure below combines the project and GOT app folders shown in
-the VS Code screenshots.
-
-``` text
+```text
 Dproject/
 │
-├── Dproject/                         # Main Django project package
-│   ├── templates/
-│   │   └── website/
-│   │       └── index.html            # Main website template
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py                   # Project configuration
-│   ├── urls.py                       # Main URL configuration
-│   └── views.py                      # Project-level views
+├── Dproject/
+│   ├── settings.py
+│   ├── urls.py
+│   └── views.py
 │
-├── GOT/                              # GOT Django application
-│   ├── migrations/                   # Database migrations
+├── GOT/
+│   ├── migrations/
 │   ├── templates/
 │   │   └── GOT/
-│   │       └── all_got.html          # GOT app template
-│   ├── __pycache__/                  # Python-generated cache (not committed)
-│   ├── __init__.py
-│   ├── admin.py                      # Django admin configuration
-│   ├── apps.py                       # App configuration
-│   ├── models.py                     # Data models
-│   ├── tests.py                      # Tests
-│   ├── urls.py                       # App URL routes
-│   └── views.py                      # App view functions
+│   │       └── all_got.html
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── admin.py
 │
 ├── static/
-│   └── style.css                     # CSS styles
+│   └── style.css
 │
-├── db.sqlite3                        # SQLite database (local development)
-└── manage.py                         # Django command-line utility
+├── manage.py
+└── requirements.txt
 ```
 
-> `__pycache__` and usually `db.sqlite3` are local/generated files.
-> Consider excluding them from Git unless you have a specific reason to
-> track the database.
+## Features
 
-## Project Overview
+* Django project and app structure
+* URL routing and views
+* HTML templates
+* CSS styling
+* MySQL database connection
+* Django ORM and migrations
 
-The project is organized into:
+## Database
 
--   **`Dproject/`**: Main Django configuration package, including
-    settings and the root URL configuration.
--   **`GOT/`**: A Django app containing its own views, URL patterns,
-    templates, models, and tests.
--   **`templates/`**: HTML files rendered by Django.
--   **`static/`**: Frontend assets such as CSS.
--   **`db.sqlite3`**: SQLite database used for local development.
--   **`manage.py`**: Utility for running the development server and
-    other Django management commands.
+This project uses **MySQL** for database management.
 
-## Request-Response Flow
+Create the database:
 
-For a request to the GOT page, the flow is typically:
-
-``` text
-Browser
-   |
-   | GET /GOT/
-   v
-Dproject/urls.py
-   |
-   | includes GOT.urls
-   v
-GOT/urls.py
-   |
-   | matches route
-   v
-GOT/views.py
-   |
-   | renders GOT/all_got.html
-   v
-Browser displays the page
+```sql
+CREATE DATABASE got_db;
 ```
 
-The actual route behavior depends on the URL patterns and view code in
-your project.
+Configure MySQL in `Dproject/settings.py`:
 
-## URL Configuration
-
-A typical main URL configuration in `Dproject/urls.py` can include the
-GOT app like this:
-
-``` python
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("GOT/", include("GOT.urls")),
-]
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "got_db",
+        "USER": "your_username",
+        "PASSWORD": "your_password",
+        "HOST": "localhost",
+        "PORT": "3306",
+    }
+}
 ```
 
-The app-level `GOT/urls.py` can define its route like this:
+## Installation & Run
 
-``` python
-from django.urls import path
-from . import views
+**1. Clone the repository**
 
-urlpatterns = [
-    path("", views.all_got, name="all_got"),
-]
+```bash
+git clone <your-repository-url>
+cd Dproject
 ```
 
-This maps `/GOT/` to the `all_got` view, assuming that function is
-defined in `GOT/views.py`.
+**2. Create and activate virtual environment**
 
-## Templates and Static Files
-
-  File                                      Purpose
-  ----------------------------------------- -------------------
-  `Dproject/templates/website/index.html`   Main website page
-  `GOT/templates/GOT/all_got.html`          GOT app page
-  `static/style.css`                        Stylesheet
-
-Django templates allow views to return dynamic HTML. Static files such
-as CSS are used to style the pages.
-
-For project-level templates, check the `TEMPLATES` configuration in
-`Dproject/settings.py`. For static files, configure `STATIC_URL` and any
-needed static directories in settings.
-
-## Run Locally
-
-Run these commands from the directory containing `manage.py`.
-
-### 1. Create and activate a virtual environment
-
-**Windows PowerShell:**
-
-``` powershell
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 2. Install Django
+**3. Install dependencies**
 
-``` powershell
-python -m pip install django
+```bash
+pip install -r requirements.txt
 ```
 
-If your repository has a `requirements.txt` file, install dependencies
-with:
+If you don't have a requirements file yet:
 
-``` powershell
-python -m pip install -r requirements.txt
+```bash
+pip install django mysqlclient
 ```
 
-### 3. Apply database migrations
+**4. Apply migrations**
 
-``` powershell
+```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 4. Start the development server
+**5. Run the server**
 
-``` powershell
+```bash
 python manage.py runserver
 ```
 
-Open `http://127.0.0.1:8000/` and navigate to the routes configured in
-your URL files. If the GOT route is configured as shown above, visit:
+Open: `http://127.0.0.1:8000/`
 
-`http://127.0.0.1:8000/GOT/`
+GOT page: `http://127.0.0.1:8000/GOT/` (if configured)
 
-## Common Django Concepts Practiced
+## Learning Goals
 
--   **Project and app structure:** Separating site configuration from
-    app-specific functionality.
--   **URL dispatcher:** Mapping paths to view functions.
--   **Views:** Processing requests and returning responses.
--   **Templates:** Rendering HTML pages.
--   **Static files:** Serving CSS and other frontend assets during
-    development.
--   **Models and migrations:** Defining data and tracking database
-    schema changes.
--   **Testing:** Writing checks for application behavior.
-
-## Troubleshooting
-
-### ImportError: cannot import name `GOT` from `Dproject`
-
-Avoid using `from Dproject import GOT` to connect the app unless you
-explicitly created that name in the package.
-
-Use `include()` in the main URL configuration:
-
-``` python
-from django.urls import path, include
-
-urlpatterns = [
-    path("GOT/", include("GOT.urls")),
-]
-```
-
-Inside `GOT/urls.py`, use a local views import:
-
-``` python
-from . import views
-```
-
-Also confirm that `GOT/urls.py` defines `urlpatterns`, that
-`GOT/views.py` contains the referenced view, and that `GOT` is listed in
-`INSTALLED_APPS` in `settings.py`.
-
-### TemplateDoesNotExist
-
-Check the spelling and capitalization of the template path. For example,
-if the view renders `GOT/all_got.html`, the file should be located at:
-
-`GOT/templates/GOT/all_got.html`
-
-### Static CSS not loading
-
-Check `STATIC_URL` and ensure the template references static assets
-using Django's static template tag. During development, confirm
-`django.contrib.staticfiles` is enabled.
-
-## Suggested `.gitignore`
-
-``` gitignore
-.venv/
-__pycache__/
-*.py[cod]
-db.sqlite3
-.env
-```
-
-If you intentionally need to share a development database, remove
-`db.sqlite3` from `.gitignore` and consider whether it contains data
-that should be public.
+* Understand Django project structure
+* Practice URL patterns and views
+* Render dynamic HTML using templates
+* Connect Django with MySQL
+* Learn database operations using Django ORM
 
 ## Future Improvements
 
--   Document each page and route as the project grows.
--   Add screenshots of the running website.
--   Add tests for URL patterns and views.
--   Add `requirements.txt` to record dependencies.
--   Expand the app with database-backed features if needed.
+* [ ] Add CRUD operations
+* [ ] Improve frontend design
+* [ ] Add form validation
+* [ ] Add user authentication
+* [ ] Write Django tests
 
-## License
+## Author
 
-No license is specified yet. Add a license file if you plan to publish
-the project for reuse.
+**Rupesh Patil**
+
+Django Backend Development Practice Project
